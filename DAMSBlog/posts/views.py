@@ -13,7 +13,8 @@ def posts_detail(request):
 
 
 def posts_list(request):
-    return HttpResponse("<h1>List</h1>")
+    return render(request, 'index.html', {})
+    # return HttpResponse("<h1>List</h1>")
 
 
 def posts_update(request):
