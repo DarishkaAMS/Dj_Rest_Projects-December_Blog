@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-
+from .models import Post
 # Create your views here.
 
 
@@ -16,7 +16,9 @@ def posts_detail(request):
 
 
 def posts_list(request):
+    queryset = Post.objects.all()
     context_data = {
+        'obj_list': queryset,
         'title': 'List'
     }
     return render(request, 'index.html', context_data)
