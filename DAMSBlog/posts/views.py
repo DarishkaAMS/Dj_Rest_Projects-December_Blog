@@ -9,12 +9,17 @@ def posts_create(request):
 
 
 def posts_detail(request):
-    return HttpResponse("<h1>Detail</h1>")
+    context_data = {
+        'title': 'Detail'
+    }
+    return render(request, 'index.html', context_data)
 
 
 def posts_list(request):
-    return render(request, 'index.html', {})
-    # return HttpResponse("<h1>List</h1>")
+    context_data = {
+        'title': 'List'
+    }
+    return render(request, 'index.html', context_data)
 
 
 def posts_update(request):
