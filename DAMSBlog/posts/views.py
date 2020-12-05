@@ -8,8 +8,8 @@ def posts_create(request):
     return HttpResponse("<h1>Create</h1>")
 
 
-def posts_detail(request):
-    instance = Post.objects.get(id=3)
+def posts_detail(request, id=None):
+    instance = Post.objects.get(id=id)
     # instance = get_object_or_404(Post, title='Saturday Morning')
     context_data = {
         'title': instance.title,
