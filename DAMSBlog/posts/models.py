@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 # Create your models here.
 # MVC - Model View Controller
@@ -16,7 +17,8 @@ class Post(models.Model):
     def __str__(self):
         return self.title
 
-
+    def get_absolute_url(self):
+        return reverse("posts_detail", kwargs={'id': self.id})
 
 
 
