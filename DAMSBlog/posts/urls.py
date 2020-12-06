@@ -7,5 +7,5 @@ urlpatterns = [
     path('create/', posts_create, name='posts_create'),
     path('<int:id>', posts_detail, name='posts_detail'),
     path('<int:id>/edit/', posts_update, name='posts_update'),
-    path('delete/', posts_delete, name='posts_delete'),
+    path('<int:id>/delete/', posts_delete, name='posts_delete'),
 ]
