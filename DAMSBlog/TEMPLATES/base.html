@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block head_title %} DarishkaAMS {% endblock head_title %}</title>
+</head>
+<body>
+    {% if messages %}
+    <div class="messages">
+        <ul class="messages">
+            {% for message in messages %}
+            <li {% if message.tags %} class="{{ message.tags }}" {% endif %}> {{ message }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+
+    <div class="container">
+        {% block content %}
+            <h1>{{ title }} is working!</h1>
+
+            {% for obj in obj_list %}
+            <!--'{% url "posts_detail" id=obj.id %}'-->
+            <a href='{{ obj.get_absolute_url }}'> {{ obj.title }}</a><br/>
+            {{ obj.content }}<br/>
+            {{ obj.timestamp }}<br/>
+            {{ obj.updated }}<br/>
+            {{ obj.id }}<br/>
+
+            {% endfor%}
+        {% endblock content%}
+    </div>
+
+</body>
+</html>

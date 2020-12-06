@@ -1,19 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends "base.html" %}
 
-<body>
-    {% if messages %}
-    <ul class="messages">
-        {% for message in messages %}
-        <li {% if message.tags %} class="{{ message.tags }}" {% endif %}> {{ message }}</li>
-        {% endfor %}
-    </ul>
-    {% endif %}
+{% block head_title %} {{ instance.title }} | {{ block.super }} {% endblock head_title %}
+
+{% block content %}
     <h1>{{ title }} is working!</h1>
 
     {{ instance.title }}<br/>
@@ -22,7 +11,4 @@
     {{ instance.updated }}<br/>
     {{ instance.id }}<br/>
 
-</body>
-
-</body>
-</html>
+{% endblock content%}
