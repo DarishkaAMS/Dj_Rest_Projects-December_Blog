@@ -4,6 +4,9 @@
 
 {% block content %}
 <div class="col-sm-6 col-sm-offset-3">
+    {% if instance.image %}
+    <img src="{{ instance.image.url }}" class="img-responsive"/>
+    {% endif %}
     <h1>{{ title }} is working!<h2> {{ instance.timestamp }} </h2></h1>
 
     {{ instance.content | linebreaks }}<br/>
