@@ -10,7 +10,7 @@ from .forms import PostForm
 
 
 def posts_create(request):
-    form = PostForm(request.POST or None)
+    form = PostForm(request.POST or None, request.FILES or None)
     if form.is_valid():
         instance = form.save(commit=False)
         print(form.cleaned_data.get('title'))
@@ -57,7 +57,7 @@ def posts_list(request):
 
 def posts_update(request, id=None):
     instance = Post.objects.get(id=id)
-    form = PostForm(request.POST or None, instance=instance)
+    form = PostForm(request.POST or None, request.FILES or None, instance=instance)
     if form.is_valid():
         instance = form.save(commit=False)
         instance.save()
