@@ -11,7 +11,7 @@
     <h1>{{ title }} is working!<h2> {{ instance.timestamp }} </h2></h1>
 
 <!--    Share STRING {{ share_str }}-->
-    {{ instance.content | linebreaks }}<br/>
+    {{ instance.content | truncatechars:20 | urlify }}<br/>
 
 <!--    {{ instance.content | urlify }}-->
 <!--    {{ share_str }}-->
