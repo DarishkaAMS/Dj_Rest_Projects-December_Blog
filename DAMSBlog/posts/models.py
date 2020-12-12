@@ -1,6 +1,7 @@
 from django.db import models
+from django.db.models.signals import pre_save
 from django.urls import reverse
-
+from django.utils.text import slugify
 
 # Create your models here.
 # MVC - Model View Controller
@@ -34,3 +35,15 @@ class Post(models.Model):
 
     class Meta:
         ordering = ['-timestamp', '-updated']
+
+
+def pre_save_post_signal_receive(sender, instance, *args, **kwargs):
+    slug = slugify(instance.title)
+    #  "Tesla item 1" => "tesla-item-1"
+    exists = Post.objects.filter(slug=slug).exists()
+    if exists:
+        slug = "%$-%$" % (slug, instance.id)
+    instance.slug = slug
+
+
+pre_save.connect(pre_save_post_signal_receive, sender=Post)
