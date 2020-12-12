@@ -8,12 +8,13 @@ from urllib.parse import quote_plus
 from .models import Post
 from .forms import PostForm
 
+
 # Create your views here.
 
 
 def posts_create(request):
     if not request.user.is_staff or not request.user.is_superuser:
-    # if not request.user.is_authenticated:
+        # if not request.user.is_authenticated:
         raise Http404
 
     form = PostForm(request.POST or None, request.FILES or None)
@@ -91,5 +92,3 @@ def posts_delete(request, id=None):
     instance.delete()
     messages.success(request, "Successfully deleted")
     return redirect("posts_list")
-
-
