@@ -9,6 +9,11 @@
     <img src="{{ instance.image.url }}" class="img-responsive"/>
     {% endif %}
     <h1>{{ title }} is working!<h2> {{ instance.timestamp }} </h2></h1>
+    {% if instance.user.get_full_name %}
+    <p> Author: {{ instance.user.get_full_name }}</p>
+    {% else %}
+    <p> Author: {{ instance.user }}</p>
+    {% endif %}
 
 <!--    Share STRING {{ share_str }}-->
 <!--    {{ instance.content | truncatechars:20 | urlify }}<br/>-->
