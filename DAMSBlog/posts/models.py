@@ -37,6 +37,19 @@ class Post(models.Model):
         ordering = ['-timestamp', '-updated']
 
 
+def check_slug_creation(instance, new_slug=None):
+    slug = slugify(instance.title)
+    if new_slug is not None:
+        slug = new_slug
+
+    query_set = Post.objects.filter(slug=slug).order_by("-id")
+    exists = query_set.exists()
+    if exists:
+        new_slug = "%s-%s" % (slug, query_set.first().id)
+        return check_slug_creation(instance, new_slug=new_slug)
+    return slug
+
+
 def pre_save_post_signal_receive(sender, instance, *args, **kwargs):
     slug = slugify(instance.title)
     #  "Tesla item 1" => "tesla-item-1"
