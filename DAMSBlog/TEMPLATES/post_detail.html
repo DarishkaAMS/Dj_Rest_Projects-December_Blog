@@ -11,10 +11,7 @@
     <h1>{{ title }} is working!<h2> {{ instance.timestamp }} </h2></h1>
 
 <!--    Share STRING {{ share_str }}-->
-    {{ instance.content | truncatechars:20 | urlify }}<br/>
-
-<!--    {{ instance.content | urlify }}-->
-<!--    {{ share_str }}-->
+<!--    {{ instance.content | truncatechars:20 | urlify }}<br/>-->
 
     <a href="https://www.facebook.com/sharer/sharer.php? u={{ request.build_absolute_uri }}">
     Share on Facebook
