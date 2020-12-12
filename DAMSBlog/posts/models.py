@@ -55,7 +55,7 @@ def pre_save_post_signal_receive(sender, instance, *args, **kwargs):
     #  "Tesla item 1" => "tesla-item-1"
     exists = Post.objects.filter(slug=slug).exists()
     if exists:
-        slug = "%$-%$" % (slug, instance.id)
+        slug = f"{slug} {instance.id}"
     instance.slug = slug
 
 

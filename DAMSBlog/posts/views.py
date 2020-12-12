@@ -3,6 +3,8 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse, HttpResponseRedirect
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 
+from urllib.parse import quote_plus
+
 from .models import Post
 from .forms import PostForm
 
@@ -28,9 +30,11 @@ def posts_create(request):
 def posts_detail(request, id=None):
     instance = Post.objects.get(id=id)
     # instance = get_object_or_404(Post, title='Saturday Morning')
+    share_str = quote_plus(instance.content)
     context_data = {
         'title': instance.title,
         'instance': instance,
+        'share_str': share_str,
     }
     return render(request, 'post_detail.html', context_data)
 
