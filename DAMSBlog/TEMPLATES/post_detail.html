@@ -4,7 +4,7 @@
 {% block head_title %} {{ instance.title }} | {{ block.super }} {% endblock head_title %}
 
 {% block content %}
-<div class="col-sm-6 col-sm-offset-3">
+<p class="col-sm-6 col-sm-offset-3">
     {% if instance.image %}
     <img src="{{ instance.image.url }}" class="img-responsive"/>
     {% endif %}
@@ -15,18 +15,19 @@
     <p> Author: {{ instance.user }}</p>
     {% endif %}
 
-    <div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-width="" data-layout="standard" data-action="like" data-size="small" data-share="true"></div>
-<!--    Share STRING {{ share_str }}-->
+    <p><div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-width="" data-layout="standard" data-action="like" data-size="small" data-share="true"></div>
+    </p>
+    <!--    Share STRING {{ share_str }}-->
 <!--    {{ instance.content | truncatechars:20 | urlify }}<br/>-->
-
-    <a href="https://www.facebook.com/sharer/sharer.php? u={{ request.build_absolute_uri }}">
-    Share on Facebook
-    </a>
-    <br>
+    <p>
+<!--    <a href="https://www.facebook.com/sharer/sharer.php? u={{ request.build_absolute_uri }}">-->
+<!--    Share on Facebook-->
+<!--    </a>-->
     <a href="https://twitter.com/home?status= {{ instance.content | urlify }} %20{{ request.build_absolute_uri }}">
     Share on Twitter
     </a>
+    <hr/>
     <div class="fb-comments" data-href="{{ request.build_absolute_uri }}" data-numposts="5" data-width=""></div>
-
+    </p>
 </div>
 {% endblock content%}
