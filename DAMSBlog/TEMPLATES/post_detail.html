@@ -8,13 +8,14 @@
     {% if instance.image %}
     <img src="{{ instance.image.url }}" class="img-responsive"/>
     {% endif %}
-    <h1>{{ title }} is working!<h2> {{ instance.timestamp }} </h2></h1>
+    <h1>{{ title }}</h1> <h2> {{ instance.timestamp }} </h2>
     {% if instance.user.get_full_name %}
     <p> Author: {{ instance.user.get_full_name }}</p>
     {% else %}
     <p> Author: {{ instance.user }}</p>
     {% endif %}
 
+    {{ instance.content | linebreaks }}
     <p><div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-width="" data-layout="standard" data-action="like" data-size="small" data-share="true"></div>
     </p>
     <!--    Share STRING {{ share_str }}-->

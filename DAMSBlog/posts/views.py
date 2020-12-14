@@ -66,7 +66,7 @@ def posts_list(request):
 
 
 def posts_update(request, id=None):
-    if not request.user.is_staff or not request.user.superuser:
+    if not request.user.is_staff or not request.user.is_superuser:
         raise Http404
 
     instance = Post.objects.get(id=id)
@@ -86,7 +86,7 @@ def posts_update(request, id=None):
 
 
 def posts_delete(request, id=None):
-    if not request.user.is_staff or not request.user.superuser:
+    if not request.user.is_staff or not request.user.is_superuser:
         raise Http404
     instance = get_object_or_404(Post, id=id)
     instance.delete()
