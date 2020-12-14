@@ -6,9 +6,10 @@
 <div class="col-sm-6 col-sm-offset-3">
     <h1>{{ title }}</h1>
     <form method="GET" action="">
-        <input type="text" name="q" placeholder="Search posts"/>
-        <input type="submit" value="Search">
+        <input type="text" name="q" placeholder="Search posts" value="{{ request.GET.q }}"/>
+        <input type="submit" class="btn btn-primary" value="Search">
     </form>
+    <hr>
 {% for obj in obj_list %}
 <div class="row">
     <div class="col-sm-12">
