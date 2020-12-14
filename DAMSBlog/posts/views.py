@@ -37,6 +37,9 @@ def posts_create(request):
 def posts_detail(request, id=None):
     instance = Post.objects.get(id=id)
     # instance = get_object_or_404(Post, title='Saturday Morning')
+    if instance.draft:
+        if not request.user.is_staff or not request.user.is_superuser:
+            raise Http404
     share_str = quote_plus(instance.content)
     context_data = {
         'title': instance.title,
@@ -47,7 +50,7 @@ def posts_detail(request, id=None):
 
 
 def posts_list(request):
-    queryset_list = Post.objects.all()  # .order_by('-timestamp')
+    queryset_list = Post.objects.active()  # .order_by('-timestamp')
     paginator = Paginator(queryset_list, 5)  # Show 25 contacts per page.
     page = request.GET.get('page')
 
