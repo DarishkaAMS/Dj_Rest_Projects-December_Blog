@@ -5,6 +5,10 @@
 
 <div class="col-sm-6 col-sm-offset-3">
     <h1>{{ title }}</h1>
+    <form method="GET" action="">
+        <input type="text" name="q" placeholder="Search posts"/>
+        <input type="submit" value="Search">
+    </form>
 {% for obj in obj_list %}
 <div class="row">
     <div class="col-sm-12">
@@ -13,9 +17,9 @@
             <img src="{{ obj.image.url }}" class="img-responsive"/>
             {% endif %}
             <div class="caption">
-                {% if obj.draft %} <small> <span style="color:red;"> <b> Draft </b> </span> </small> {% endif %}
+                {% if obj.draft %} <small> Staff only: <span style="color:red;"> <b> Draft </b> </span> </small> {% endif %}
                 <br>
-                {% if obj.publish > today %} <small> <span style="color:red;"> <b> Future Post </b> </span> </small> {% endif %}
+                {% if obj.publish > today %} <small> Staff only: <span style="color:red;"> <b> Future Post </b> </span> </small> {% endif %}
                 <h3> <a href='{{ obj.get_absolute_url }}'> {{ obj.title }}</a> <small> {{ obj.publish   }} </small></h3>
                 {% if obj.user.get_full_name %}
                 <p> Author: {{ obj.user.get_full_name }}</p>
