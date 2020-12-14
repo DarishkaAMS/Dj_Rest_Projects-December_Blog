@@ -50,7 +50,10 @@ def posts_detail(request, id=None):
 
 
 def posts_list(request):
+    today = timezone.now().date()
     queryset_list = Post.objects.active()  # .order_by('-timestamp')
+    if request.user.is_staff or request.user.is_superuser:
+        queryset_list = Post.objects.all()
     paginator = Paginator(queryset_list, 5)  # Show 25 contacts per page.
     page = request.GET.get('page')
 
@@ -63,7 +66,8 @@ def posts_list(request):
 
     context_data = {
         'obj_list': queryset,
-        'title': 'List'
+        'title': 'List',
+        "today": today,
     }
     # return render(request, 'post_list.html', {'page_obj': page_obj})
     return render(request, 'post_list.html', context_data)
