@@ -54,6 +54,10 @@ def posts_list(request):
     queryset_list = Post.objects.active()  # .order_by('-timestamp')
     if request.user.is_staff or request.user.is_superuser:
         queryset_list = Post.objects.all()
+
+    query = request.GET.get('q')
+    if query:
+        queryset_list = queryset_list.filter(title__icontains=query)
     paginator = Paginator(queryset_list, 5)  # Show 25 contacts per page.
     page = request.GET.get('page')
 
