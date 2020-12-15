@@ -15,9 +15,9 @@
     <p> Author: {{ instance.user }}</p>
     {% endif %}
 
-<div class="col-sm-12 content-markdown">
+<div class="col-sm-12">
 
-    {{ instance.content }} <!--    | linebreaks | safe-->
+    <div class="content-markdown"> {{ instance.content }} </div><!--    | linebreaks | safe-->
 <!--    <p><div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-width="" data-layout="standard" data-action="like" data-size="small" data-share="true"></div>-->
     </p>
 
