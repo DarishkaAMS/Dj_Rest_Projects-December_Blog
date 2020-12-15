@@ -15,20 +15,18 @@
     <p> Author: {{ instance.user }}</p>
     {% endif %}
 
-    {{ instance.content | linebreaks }}
-    <p><div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-width="" data-layout="standard" data-action="like" data-size="small" data-share="true"></div>
+<div class="col-sm-12 content-markdown">
+
+    {{ instance.content }} <!--    | linebreaks | safe-->
+<!--    <p><div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-width="" data-layout="standard" data-action="like" data-size="small" data-share="true"></div>-->
     </p>
-    <!--    Share STRING {{ share_str }}-->
-<!--    {{ instance.content | truncatechars:20 | urlify }}<br/>-->
-    <p>
-<!--    <a href="https://www.facebook.com/sharer/sharer.php? u={{ request.build_absolute_uri }}">-->
-<!--    Share on Facebook-->
-<!--    </a>-->
-    <a href="https://twitter.com/home?status= {{ instance.content | urlify }} %20{{ request.build_absolute_uri }}">
+
+<!--    <a href="https://twitter.com/home?status= {{ instance.content | urlify }} %20{{ request.build_absolute_uri }}">-->
     Share on Twitter
     </a>
     <hr/>
-    <div class="fb-comments" data-href="{{ request.build_absolute_uri }}" data-numposts="5" data-width=""></div>
+<!--    <div class="fb-comments" data-href="{{ request.build_absolute_uri }}" data-numposts="5" data-width=""></div>-->
     </p>
+</div>
 </div>
 {% endblock content%}
