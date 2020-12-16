@@ -18,14 +18,16 @@
 <div class="col-sm-12">
 
     <div class="content-markdown"> {{ instance.content }} </div><!--    | linebreaks | safe-->
-<!--    <p><div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-width="" data-layout="standard" data-action="like" data-size="small" data-share="true"></div>-->
+
+
+    <p><div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-width="" data-layout="standard" data-action="like" data-size="small" data-share="true"></div>
     </p>
 
-<!--    <a href="https://twitter.com/home?status= {{ instance.content | urlify }} %20{{ request.build_absolute_uri }}">-->
+    <a href="https://twitter.com/home?status= {{ instance.content | urlify }} %20{{ request.build_absolute_uri }}">
     Share on Twitter
     </a>
     <hr/>
-<!--    <div class="fb-comments" data-href="{{ request.build_absolute_uri }}" data-numposts="5" data-width=""></div>-->
+    <div class="fb-comments" data-href="{{ request.build_absolute_uri }}" data-numposts="5" data-width=""></div>
     </p>
 </div>
 </div>
